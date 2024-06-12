@@ -68,7 +68,7 @@ router.post('/addcat', upload.array('file', 5), async (req, res) => {
       return
     }
 
-    const missingImageUrls = (req.files ) //as Express.Multer.File[]
+    const missingImageUrls = (req.files as Express.Multer.File[]) //
       .map((file:any) => 'server/images/missing_cats/' + file.filename)
       .join(',')
 
