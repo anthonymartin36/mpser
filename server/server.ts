@@ -1,6 +1,7 @@
 //server.ts
 import express from 'express'
 import * as Path from 'node:path'
+import cors from 'cors'
 
 import missingCatRoutes from './routes/missing-cat-routes'
 import sightedCatRoutes from './routes/sighted-cat-routes'
@@ -9,6 +10,8 @@ import * as dotenv from 'dotenv'
 const server = express()
 
 dotenv.config()
+
+server.use(cors({methods:["get","post","put","delete"],origin:'*'}))
 
 server.use(express.json())
 server.use('/api/v1/missingcats', missingCatRoutes)
